@@ -7,17 +7,17 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import de.nlinz.javaSocket.client.interfaces.IEvaClient;
+import de.nlinz.javaSocket.client.interfaces.ISocketClient;
 
 public class SocketClient implements Runnable {
 	private String host;
 	private int port;
 	private Socket socket;
 	private AtomicBoolean enabled;
-	private IEvaClient app;
+	private ISocketClient app;
 	private DataInputStream inputStream;
 
-	public SocketClient(final IEvaClient app, final String host, final int port) {
+	public SocketClient(final ISocketClient app, final String host, final int port) {
 		this.enabled = new AtomicBoolean(true);
 		this.host = host;
 		this.port = port;

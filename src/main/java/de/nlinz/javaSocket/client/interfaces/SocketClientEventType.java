@@ -1,6 +1,6 @@
 package de.nlinz.javaSocket.client.interfaces;
 
-public enum EvaEventType {
+public enum SocketClientEventType {
 	CONNECT, DISCONNECT;
 
 }

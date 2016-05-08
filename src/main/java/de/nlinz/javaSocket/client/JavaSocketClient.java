@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
 
 import de.nlinz.javaSocket.client.events.SocketDataEvent;
 import de.nlinz.javaSocket.client.events.SocketTypeEvent;
-import de.nlinz.javaSocket.client.interfaces.EvaEventType;
+import de.nlinz.javaSocket.client.interfaces.SocketClientEventType;
 import de.nlinz.javaSocket.client.interfaces.IDataListener;
-import de.nlinz.javaSocket.client.interfaces.IEvaClient;
+import de.nlinz.javaSocket.client.interfaces.ISocketClient;
 import de.nlinz.javaSocket.client.interfaces.ITypeListener;
 import de.nlinz.javaSocket.client.run.SocketClient;
 
-public class JavaSocketClient implements IEvaClient {
+public class JavaSocketClient implements ISocketClient {
 
 	/* Variables and instances */
 	private SocketClient client;
@@ -69,7 +69,7 @@ public class JavaSocketClient implements IEvaClient {
 
 	/* Call when the client join the network */
 	public void onConnect(final SocketClient client) {
-		final EvaEventType type = EvaEventType.CONNECT;
+		final SocketClientEventType type = SocketClientEventType.CONNECT;
 		final SocketTypeEvent event = new SocketTypeEvent(client);
 		for (ITypeListener listener : typeListeners) {
 			if (listener.getType() == type) {
@@ -82,7 +82,7 @@ public class JavaSocketClient implements IEvaClient {
 
 	/* Call when the client leave the network */
 	public void onDisconnect(final SocketClient client) {
-		final EvaEventType type = EvaEventType.DISCONNECT;
+		final SocketClientEventType type = SocketClientEventType.DISCONNECT;
 		final SocketTypeEvent event = new SocketTypeEvent(client);
 		for (ITypeListener listener : typeListeners) {
 			if (listener.getType() == type) {
