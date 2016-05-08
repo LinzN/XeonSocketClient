@@ -1,7 +1,7 @@
 package de.nlinz.javaSocket.client;
 
 public class SocketDebug {
-	private static String prefix = "[EVA]";
+	private static String prefix = "[SocketClient]";
 
 	public static void sendConnectSuccess(String adress) {
 		System.out.println(prefix + "Connection to " + adress + " succesful!");
@@ -12,11 +12,11 @@ public class SocketDebug {
 	}
 
 	public static void sendStopSuccess() {
-		System.out.println(prefix + "EvaClient shutting down succesful!");
+		System.out.println(prefix + "Client shutting down succesful!");
 	}
 
 	public static void sendStopError() {
-		System.out.println(prefix + "Error on shutting down EvaClient!");
+		System.out.println(prefix + "Error on shutting down Client!");
 	}
 
 }
