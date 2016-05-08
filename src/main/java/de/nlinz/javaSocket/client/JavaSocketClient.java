@@ -1,5 +1,5 @@
 
-package de.nlinz.system.client.eva;
+package de.nlinz.javaSocket.client;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -11,15 +11,15 @@ import java.util.HashSet;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import de.nlinz.system.client.eva.client.SocketClient;
-import de.nlinz.system.client.eva.client.SocketDataEvent;
-import de.nlinz.system.client.eva.client.SocketTypeEvent;
-import de.nlinz.system.client.eva.interfaces.EvaEventType;
-import de.nlinz.system.client.eva.interfaces.IDataListener;
-import de.nlinz.system.client.eva.interfaces.IEvaClient;
-import de.nlinz.system.client.eva.interfaces.ITypeListener;
+import de.nlinz.javaSocket.client.events.SocketDataEvent;
+import de.nlinz.javaSocket.client.events.SocketTypeEvent;
+import de.nlinz.javaSocket.client.interfaces.EvaEventType;
+import de.nlinz.javaSocket.client.interfaces.IDataListener;
+import de.nlinz.javaSocket.client.interfaces.IEvaClient;
+import de.nlinz.javaSocket.client.interfaces.ITypeListener;
+import de.nlinz.javaSocket.client.run.SocketClient;
 
-public class EvaClient implements IEvaClient {
+public class JavaSocketClient implements IEvaClient {
 
 	/* Variables and instances */
 	private SocketClient client;
@@ -29,7 +29,7 @@ public class EvaClient implements IEvaClient {
 	private static HashSet<ITypeListener> typeListeners = new HashSet<ITypeListener>();
 
 	/* Create this new Instance of EvaClient with the IEvaClient interface */
-	public EvaClient(String hostName, int port) {
+	public JavaSocketClient(String hostName, int port) {
 		this.hostName = hostName;
 		this.port = port;
 	}

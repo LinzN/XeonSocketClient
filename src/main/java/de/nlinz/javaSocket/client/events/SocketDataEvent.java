@@ -1,6 +1,8 @@
-package de.nlinz.system.client.eva.client;
+package de.nlinz.javaSocket.client.events;
 
 import java.io.ByteArrayOutputStream;
+
+import de.nlinz.javaSocket.client.run.SocketClient;
 
 public class SocketDataEvent {
 	private final SocketClient client;

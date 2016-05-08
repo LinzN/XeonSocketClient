@@ -1,6 +1,6 @@
-package de.nlinz.system.client.eva.interfaces;
+package de.nlinz.javaSocket.client.interfaces;
 
-import de.nlinz.system.client.eva.client.SocketClient;
+import de.nlinz.javaSocket.client.run.SocketClient;
 
 public interface IEvaClient {
 	void onConnect(final SocketClient p0);

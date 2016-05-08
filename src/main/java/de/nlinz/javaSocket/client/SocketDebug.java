@@ -1,4 +1,4 @@
-package de.nlinz.system.client.eva;
+package de.nlinz.javaSocket.client;
 
 public class SocketDebug {
 	private static String prefix = "[EVA]";

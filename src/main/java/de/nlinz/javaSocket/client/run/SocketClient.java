@@ -1,4 +1,4 @@
-package de.nlinz.system.client.eva.client;
+package de.nlinz.javaSocket.client.run;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import de.nlinz.system.client.eva.interfaces.IEvaClient;
+import de.nlinz.javaSocket.client.interfaces.IEvaClient;
 
 public class SocketClient implements Runnable {
 	private String host;
