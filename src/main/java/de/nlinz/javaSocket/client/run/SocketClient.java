@@ -17,6 +17,7 @@ public class SocketClient implements Runnable {
 	private ISocketClient app;
 	private DataInputStream inputStream;
 
+	/* SocketClient looking for new incoming bytedata */
 	public SocketClient(final ISocketClient app, final String host, final int port) {
 		this.enabled = new AtomicBoolean(true);
 		this.host = host;
@@ -26,6 +27,8 @@ public class SocketClient implements Runnable {
 		this.socket = new Socket();
 	}
 
+	/* First runnable for execute this class */
+	@Override
 	public void run() {
 		while (this.enabled.get()) {
 			try {
@@ -40,7 +43,9 @@ public class SocketClient implements Runnable {
 				this.socket.setTcpNoDelay(true);
 				this.app.onConnect(this);
 				this.inputStream = new DataInputStream(this.socket.getInputStream());
-
+				/*
+				 * While loop for checking if socket is connected and available
+				 */
 				while (this.enabled.get() && this.socket.isConnected()) {
 					if (this.socket.isClosed()) {
 						break;
@@ -50,7 +55,7 @@ public class SocketClient implements Runnable {
 						continue;
 					}
 
-					byte[] bytes = new byte[(int) inputStream.available()];
+					byte[] bytes = new byte[inputStream.available()];
 					inputStream.readFully(bytes);
 					this.app.onDataRecieve(this, channel, bytes);
 
@@ -64,22 +69,27 @@ public class SocketClient implements Runnable {
 
 	}
 
+	/* Return the port of this socketConnection */
 	public int getPort() {
 		return this.port;
 	}
 
+	/* Return the hostname of this socketConnection */
 	public String getHost() {
 		return this.host;
 	}
 
+	/* Return the full socket of this connection */
 	public Socket getSocket() {
 		return this.socket;
 	}
 
+	/* Returns a boolean value if the socket is connected or not */
 	public boolean isConnectedAndOpened() {
 		return this.socket.isConnected() && !this.socket.isClosed();
 	}
 
+	/* Write bytes out to the socketServer */
 	public void write(ByteArrayOutputStream bytes) {
 		try {
 			OutputStream out = this.socket.getOutputStream();
@@ -91,7 +101,8 @@ public class SocketClient implements Runnable {
 		}
 	}
 
-	public IOException close() {
+	/* Close the connection. If not successfully, return the IOException */
+	private IOException close() {
 		if (!this.socket.isClosed()) {
 			try {
 				this.socket.close();
@@ -103,11 +114,13 @@ public class SocketClient implements Runnable {
 		return null;
 	}
 
+	/* Interrupt the connection. If not successfully, return the IOException */
 	public IOException interrupt() {
 		this.enabled.set(false);
 		return this.close();
 	}
 
+	/* Check the connection */
 	public boolean isEnabled() {
 		return this.enabled.get();
 	}

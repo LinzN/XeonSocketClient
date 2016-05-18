@@ -13,10 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 import de.nlinz.javaSocket.client.events.SocketDataEvent;
 import de.nlinz.javaSocket.client.events.SocketTypeEvent;
-import de.nlinz.javaSocket.client.interfaces.SocketClientEventType;
 import de.nlinz.javaSocket.client.interfaces.IDataListener;
 import de.nlinz.javaSocket.client.interfaces.ISocketClient;
 import de.nlinz.javaSocket.client.interfaces.ITypeListener;
+import de.nlinz.javaSocket.client.interfaces.SocketClientEventType;
 import de.nlinz.javaSocket.client.run.SocketClient;
 
 public class JavaSocketClient implements ISocketClient {
@@ -25,6 +25,7 @@ public class JavaSocketClient implements ISocketClient {
 	private SocketClient client;
 	private String hostName;
 	private int port;
+	/* HashSets for storing the external eventlistener */
 	private static HashSet<IDataListener> dataListeners = new HashSet<IDataListener>();
 	private static HashSet<ITypeListener> typeListeners = new HashSet<ITypeListener>();
 
@@ -58,6 +59,7 @@ public class JavaSocketClient implements ISocketClient {
 	}
 
 	/* Runnable to start a new SocketClient */
+	@Override
 	public void runTaskClient(final SocketClient client) {
 		Executors.newScheduledThreadPool(1).schedule(client, 0, TimeUnit.MILLISECONDS);
 	}
@@ -68,6 +70,7 @@ public class JavaSocketClient implements ISocketClient {
 	}
 
 	/* Call when the client join the network */
+	@Override
 	public void onConnect(final SocketClient client) {
 		final SocketClientEventType type = SocketClientEventType.CONNECT;
 		final SocketTypeEvent event = new SocketTypeEvent(client);
@@ -81,6 +84,7 @@ public class JavaSocketClient implements ISocketClient {
 	}
 
 	/* Call when the client leave the network */
+	@Override
 	public void onDisconnect(final SocketClient client) {
 		final SocketClientEventType type = SocketClientEventType.DISCONNECT;
 		final SocketTypeEvent event = new SocketTypeEvent(client);
@@ -94,6 +98,7 @@ public class JavaSocketClient implements ISocketClient {
 	}
 
 	/* Call when the client receive data from the SocketServer */
+	@Override
 	public void onDataRecieve(final SocketClient client, final String channel, final byte[] bytes) {
 		final SocketDataEvent event = new SocketDataEvent(client, channel, bytes);
 		for (IDataListener listener : dataListeners) {

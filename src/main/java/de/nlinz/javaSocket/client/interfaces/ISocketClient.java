@@ -2,6 +2,7 @@ package de.nlinz.javaSocket.client.interfaces;
 
 import de.nlinz.javaSocket.client.run.SocketClient;
 
+/* Interface for the SocketClient */
 public interface ISocketClient {
 	void onConnect(final SocketClient p0);
 

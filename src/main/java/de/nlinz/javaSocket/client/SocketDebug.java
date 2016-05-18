@@ -1,5 +1,6 @@
 package de.nlinz.javaSocket.client;
 
+/* Socket debug output for tasks*/
 public class SocketDebug {
 	private static String prefix = "[SocketClient]";
 
