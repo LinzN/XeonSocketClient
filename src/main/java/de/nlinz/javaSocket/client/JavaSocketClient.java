@@ -8,9 +8,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
+import org.bukkit.Bukkit;
+
+import de.nlinz.cookieSocketBukkit.mask.CookieSocketBukkitMask;
 import de.nlinz.javaSocket.client.events.SocketDataEvent;
 import de.nlinz.javaSocket.client.events.SocketTypeEvent;
 import de.nlinz.javaSocket.client.interfaces.IDataListener;
@@ -61,12 +62,12 @@ public class JavaSocketClient implements ISocketClient {
 	/* Runnable to start a new SocketClient */
 	@Override
 	public void runTaskClient(final SocketClient client) {
-		Executors.newScheduledThreadPool(1).schedule(client, 0, TimeUnit.MILLISECONDS);
+		Bukkit.getScheduler().runTaskAsynchronously(CookieSocketBukkitMask.inst(), client);
 	}
 
 	/* Runnable for default type */
 	public void runTask(final Runnable runnable) {
-		Executors.newScheduledThreadPool(1).schedule(runnable, 0, TimeUnit.MILLISECONDS);
+		Bukkit.getScheduler().runTaskAsynchronously(CookieSocketBukkitMask.inst(), runnable);
 	}
 
 	/* Call when the client join the network */

@@ -1,0 +1,6 @@
+name: cookieSocketBukkit
+version: ${project.version}.b${build.number}
+description: Communication plugin mask
+authors: [Kekshaus]
+main: de.nlinz.cookieSocketBukkit.mask.CookieSocketBukkitMask
+load: POSTWORLD

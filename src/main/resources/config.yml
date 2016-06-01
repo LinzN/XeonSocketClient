@@ -1,0 +1,10 @@
+#Connection settings for comunicate with cookieSocketBungee
+connect:
+  #Host where cookieSocketBungee is running.
+  #If bungeecord is running on the same maschine, use 127.0.0.1
+  host: 127.0.0.1
+  #Port on cookieSocketBungee is running
+  port: 8826
+  #The servername here must be the same as you call this server in the config.yml from bungeecord.
+  #Attention! Case sensitive is important
+  serverName: lilith
