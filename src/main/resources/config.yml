@@ -1,4 +1,4 @@
-#Connection settings for comunicate with cookieSocketBungee
+#Connection settings for communication with cookieSocketBungee
 connect:
   #Host where cookieSocketBungee is running.
   #If bungeecord is running on the same maschine, use 127.0.0.1
