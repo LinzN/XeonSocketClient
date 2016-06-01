@@ -1,10 +1,12 @@
 package de.nlinz.cookieSocketBukkit.mask;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.nlinz.javaSocket.client.JavaSocketClient;
+import de.nlinz.javaSocket.client.interfaces.IClientMask;
 
-public class CookieSocketBukkitMask extends JavaPlugin {
+public class CookieSocketBukkitMask extends JavaPlugin implements IClientMask {
 	private static CookieSocketBukkitMask inst;
 
 	private String socketHost;
@@ -30,7 +32,7 @@ public class CookieSocketBukkitMask extends JavaPlugin {
 		this.socketPort = this.getConfig().getInt("connect.port");
 		this.serverName = this.getConfig().getString("connect.serverName");
 
-		this.socketClient = new JavaSocketClient(socketHost, socketPort);
+		this.socketClient = new JavaSocketClient(this, socketHost, socketPort);
 		this.socketClient.start();
 
 	}
@@ -41,5 +43,12 @@ public class CookieSocketBukkitMask extends JavaPlugin {
 
 	public String getServerName() {
 		return this.serverName;
+	}
+
+	@Override
+	public void clientScheduler(Runnable runnable) {
+		// TODO Auto-generated method stub
+		Bukkit.getScheduler().runTaskAsynchronously(this, runnable);
+
 	}
 }

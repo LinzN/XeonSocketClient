@@ -10,5 +10,5 @@ public interface ISocketClient {
 
 	void onDataRecieve(final SocketClient p0, final String channel, final byte[] bytes);
 
-	void runTaskClient(final SocketClient client);
+	void runTask(final Runnable runnable);
 }

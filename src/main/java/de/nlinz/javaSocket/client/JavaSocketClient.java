@@ -9,11 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
 
-import org.bukkit.Bukkit;
-
-import de.nlinz.cookieSocketBukkit.mask.CookieSocketBukkitMask;
 import de.nlinz.javaSocket.client.events.SocketDataEvent;
 import de.nlinz.javaSocket.client.events.SocketTypeEvent;
+import de.nlinz.javaSocket.client.interfaces.IClientMask;
 import de.nlinz.javaSocket.client.interfaces.IDataListener;
 import de.nlinz.javaSocket.client.interfaces.ISocketClient;
 import de.nlinz.javaSocket.client.interfaces.ITypeListener;
@@ -26,14 +24,16 @@ public class JavaSocketClient implements ISocketClient {
 	private SocketClient client;
 	private String hostName;
 	private int port;
+	private IClientMask mask;
 	/* HashSets for storing the external eventlistener */
 	private static HashSet<IDataListener> dataListeners = new HashSet<IDataListener>();
 	private static HashSet<ITypeListener> typeListeners = new HashSet<ITypeListener>();
 
 	/* Create this new Instance of EvaClient with the IEvaClient interface */
-	public JavaSocketClient(String hostName, int port) {
+	public JavaSocketClient(IClientMask mask, String hostName, int port) {
 		this.hostName = hostName;
 		this.port = port;
+		this.mask = mask;
 	}
 
 	/* Get this running SocketClient instance */
@@ -44,7 +44,7 @@ public class JavaSocketClient implements ISocketClient {
 	/* Starting socketClient and prepare for server connection */
 	public void start() {
 		this.client = new SocketClient(this, this.hostName, this.port);
-		this.runTaskClient(this.client);
+		this.runTask(this.client);
 	}
 
 	/* Stopping the socketClient and closing running server connections */
@@ -59,15 +59,10 @@ public class JavaSocketClient implements ISocketClient {
 		return true;
 	}
 
-	/* Runnable to start a new SocketClient */
-	@Override
-	public void runTaskClient(final SocketClient client) {
-		Bukkit.getScheduler().runTaskAsynchronously(CookieSocketBukkitMask.inst(), client);
-	}
-
 	/* Runnable for default type */
+	@Override
 	public void runTask(final Runnable runnable) {
-		Bukkit.getScheduler().runTaskAsynchronously(CookieSocketBukkitMask.inst(), runnable);
+		this.mask.clientScheduler(runnable);
 	}
 
 	/* Call when the client join the network */
