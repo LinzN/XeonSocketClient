@@ -1,6 +1,6 @@
-name: cookieSocketBukkit
+name: XeonSocketBukkit
 version: ${project.version}.b${build.number}
 description: Communication plugin mask
 authors: [Kekshaus]
-main: de.nlinz.cookieSocketBukkit.mask.CookieSocketBukkitMask
+main: de.nlinz.xeonSocketBukkit.mask.XeonSocketBukkitMask
 load: POSTWORLD

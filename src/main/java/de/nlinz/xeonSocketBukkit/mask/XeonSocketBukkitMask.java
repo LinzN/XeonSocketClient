@@ -1,4 +1,4 @@
-package de.nlinz.cookieSocketBukkit.mask;
+package de.nlinz.xeonSocketBukkit.mask;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -6,8 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import de.nlinz.javaSocket.client.JavaSocketClient;
 import de.nlinz.javaSocket.client.interfaces.IClientMask;
 
-public class CookieSocketBukkitMask extends JavaPlugin implements IClientMask {
-	private static CookieSocketBukkitMask inst;
+public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
+	private static XeonSocketBukkitMask inst;
 
 	private String socketHost;
 	private int socketPort;
@@ -15,7 +15,7 @@ public class CookieSocketBukkitMask extends JavaPlugin implements IClientMask {
 
 	private JavaSocketClient socketClient;
 
-	public static CookieSocketBukkitMask inst() {
+	public static XeonSocketBukkitMask inst() {
 		return inst;
 	}
 

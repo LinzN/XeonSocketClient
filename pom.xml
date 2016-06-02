@@ -6,7 +6,7 @@
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>cookieSocketClient</name>
+  <name>XeonSocketClient</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,9 +39,9 @@
                  </goals>
                  <id>api</id>
                  <configuration>
-                 	<finalName>cookieSocketClientApi-${project.version}</finalName>
+                 	<finalName>XeonSocketClientApi-${project.version}</finalName>
                  	<excludes>
-                    	<exclude>de/nlinz/cookieSocketBukkit/</exclude>
+                    	<exclude>de/nlinz/xeonSocketBukkit/</exclude>
                     </excludes>
                  </configuration>
               </execution>
@@ -51,7 +51,7 @@
                  </goals>
                  <id>bukkit</id>
                  <configuration>
-                 	<finalName>cookieSocketClientBukkit-${project.version}</finalName>
+                 	<finalName>XeonSocketClientBukkit-${project.version}</finalName>
                  </configuration>
               </execution>
            </executions>
@@ -70,5 +70,5 @@
 
     </plugins>
   </build>
-    <artifactId>cookieSocketClient</artifactId>
+    <artifactId>XeonSocketClient</artifactId>
 </project>
