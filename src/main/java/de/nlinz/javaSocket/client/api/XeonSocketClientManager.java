@@ -14,7 +14,7 @@ import de.nlinz.javaSocket.client.interfaces.ITypeListener;
 public class XeonSocketClientManager {
 
 	/* Send byte[] data to connected servers */
-	public static void sendBytesOut(ByteArrayOutputStream bytes) {
+	public static void sendData(ByteArrayOutputStream bytes) {
 		SocketClientInitialisator.inst.getSocketClient().write(bytes);
 
 	}
@@ -44,7 +44,7 @@ public class XeonSocketClientManager {
 	}
 
 	/* Creating a new channel inputStream */
-	public static DataInputStream createInputStream(byte[] bytes) {
+	public static DataInputStream readDataInput(byte[] bytes) {
 		InputStream inputStream = new ByteArrayInputStream(bytes);
 		DataInputStream dataInputStream = new DataInputStream(inputStream);
 		return dataInputStream;
