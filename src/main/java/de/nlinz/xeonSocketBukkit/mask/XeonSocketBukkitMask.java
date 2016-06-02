@@ -46,9 +46,16 @@ public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
 	}
 
 	@Override
-	public void clientScheduler(Runnable runnable) {
+	public void clientSchedulerAsync(Runnable runnable) {
 		// TODO Auto-generated method stub
 		Bukkit.getScheduler().runTaskAsynchronously(this, runnable);
+
+	}
+
+	@Override
+	public void clientSchedulerSync(Runnable runnable) {
+		// TODO Auto-generated method stub
+		Bukkit.getScheduler().runTask(this, runnable);
 
 	}
 }

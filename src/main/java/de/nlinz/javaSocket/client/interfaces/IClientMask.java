@@ -1,6 +1,8 @@
 package de.nlinz.javaSocket.client.interfaces;
 
 public interface IClientMask {
-	void clientScheduler(final Runnable runnable);
+	void clientSchedulerAsync(final Runnable runnable);
+
+	void clientSchedulerSync(final Runnable runnable);
 
 }

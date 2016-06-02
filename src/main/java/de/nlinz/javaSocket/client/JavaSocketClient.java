@@ -62,7 +62,7 @@ public class JavaSocketClient implements ISocketClient {
 	/* Runnable for default type */
 	@Override
 	public void runTask(final Runnable runnable) {
-		this.mask.clientScheduler(runnable);
+		this.mask.clientSchedulerAsync(runnable);
 	}
 
 	/* Call when the client join the network */
