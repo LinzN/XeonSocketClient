@@ -3,7 +3,7 @@ package de.nlinz.xeonSocketBukkit.mask;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.nlinz.javaSocket.client.JavaSocketClient;
+import de.nlinz.javaSocket.client.SocketClientInitialisator;
 import de.nlinz.javaSocket.client.interfaces.IClientMask;
 
 public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
@@ -13,7 +13,7 @@ public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
 	private int socketPort;
 	private String serverName;
 
-	private JavaSocketClient socketClient;
+	private SocketClientInitialisator socketClient;
 
 	public static XeonSocketBukkitMask inst() {
 		return inst;
@@ -32,12 +32,12 @@ public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
 		this.socketPort = this.getConfig().getInt("connect.port");
 		this.serverName = this.getConfig().getString("connect.serverName");
 
-		this.socketClient = new JavaSocketClient(this, socketHost, socketPort);
+		this.socketClient = new SocketClientInitialisator(this, socketHost, socketPort);
 		this.socketClient.start();
 
 	}
 
-	public JavaSocketClient getSocketClient() {
+	public SocketClientInitialisator getSocketClient() {
 		return this.socketClient;
 	}
 
