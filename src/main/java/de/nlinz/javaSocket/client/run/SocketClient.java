@@ -61,9 +61,7 @@ public class SocketClient implements Runnable {
 
 				}
 			} catch (IOException e2) {
-				if (this.socket != null) {
-					this.close();
-				}
+				this.close();
 				continue;
 			}
 
@@ -105,7 +103,8 @@ public class SocketClient implements Runnable {
 
 	/* Close the connection. If not successfully, return the IOException */
 	private IOException close() {
-		if (!this.socket.isClosed()) {
+
+		if (!this.socket.isClosed() && this.socket.getRemoteSocketAddress() != null) {
 			try {
 				this.socket.close();
 				this.app.onDisconnect(this);
