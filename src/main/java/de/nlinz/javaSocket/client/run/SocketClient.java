@@ -61,7 +61,9 @@ public class SocketClient implements Runnable {
 
 				}
 			} catch (IOException e2) {
-				this.close();
+				if (this.socket != null) {
+					this.close();
+				}
 				continue;
 			}
 
