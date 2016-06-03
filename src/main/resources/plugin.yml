@@ -1,4 +1,4 @@
-name: XeonSocketBukkit
+name: XeonSocketClientBukkit
 version: ${project.version}.b${build.number}
 description: Communication plugin mask
 authors: [Kekshaus]
