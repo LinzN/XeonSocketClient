@@ -95,9 +95,17 @@ public class SocketClientInitialisator implements ISocketClient {
 	@Override
 	public void onDataRecieve(final SocketClient client, final String channel, final byte[] bytes) {
 		final SocketDataEvent event = new SocketDataEvent(client, channel, bytes);
-		for (IDataListener listener : dataListeners) {
+		for (final IDataListener listener : dataListeners) {
 			if (listener.getChannel().equalsIgnoreCase(channel)) {
-				listener.onDataRecieve(event);
+				this.mask.clientSchedulerSync(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						listener.onDataRecieve(event);
+					}
+
+				});
 			}
 		}
 
