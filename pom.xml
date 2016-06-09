@@ -40,7 +40,7 @@
 						</goals>
 						<id>api</id>
 						<configuration>
-							<finalName>XeonSocketClientApi-${project.version}</finalName>
+							<finalName>XeonSocketClient-Api</finalName>
 							<excludes>
 								<exclude>de/nlinz/xeonSocketBukkit/</exclude>
 							</excludes>
@@ -52,7 +52,7 @@
 						</goals>
 						<id>bukkit</id>
 						<configuration>
-							<finalName>XeonSocketClientBukkit-${project.version}</finalName>
+							<finalName>XeonSocketClient-Bukkit</finalName>
 						</configuration>
 					</execution>
 				</executions>
