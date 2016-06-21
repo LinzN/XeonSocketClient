@@ -31,17 +31,9 @@ public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
 		this.socketHost = this.getConfig().getString("connect.host");
 		this.socketPort = this.getConfig().getInt("connect.port");
 		this.serverName = this.getConfig().getString("connect.serverName");
-		Bukkit.getScheduler().runTaskAsynchronously(this, new Runnable() {
 
-			@Override
-			public void run() {
-				XeonSocketBukkitMask.inst().socketClient = new SocketClientInitialisator(XeonSocketBukkitMask.inst(),
-						socketHost, socketPort);
-				XeonSocketBukkitMask.inst().socketClient.start();
-
-			}
-
-		});
+		socketClient = new SocketClientInitialisator(inst, socketHost, socketPort);
+		socketClient.start();
 
 	}
 
