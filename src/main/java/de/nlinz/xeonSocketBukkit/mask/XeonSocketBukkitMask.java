@@ -1,5 +1,6 @@
 package de.nlinz.xeonSocketBukkit.mask;
 
+import org.bstats.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,6 +35,7 @@ public class XeonSocketBukkitMask extends JavaPlugin implements IClientMask {
 
 		socketClient = new SocketClientInitialisator(inst, socketHost, socketPort);
 		socketClient.start();
+		new Metrics(this);
 
 	}
 
